@@ -41,10 +41,7 @@ export default {
             if(res.data.success=="False"){
                 this.success("登录失败！请核对账号和密码");
             }else{
-                this.success("登录成功,1.5s后进入系统");
-                setTimeout(()=>{
-                    this.$router.push("/")
-                },1500)
+                this.$router.push("/");
             }
         })
     },
@@ -57,7 +54,7 @@ export default {
             <p>{message}</p>
           </div>
         ),
-      });
+      })
     },
   }
 };
