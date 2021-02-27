@@ -23,39 +23,48 @@ export default {
     return {
       username: "",
       password: "",
-      formdata:{
-          user:'',
-          passwd:'',
+      formdata: {
+        user: "",
+        passwd: ""
       }
     };
   },
   methods: {
     // 用户登录
     login() {
-        this.formdata.user = this.username;
-        this.formdata.passwd = this.password;
-        let user_params = new URLSearchParams();
-        user_params.append("data",JSON.stringify(this.formdata));
-        // 请求接口
-        login(user_params).then(res=>{
-            if(res.data.success=="False"){
-                this.success("登录失败！请核对账号和密码");
-            }else{
-                this.$router.push("/");
-            }
-        })
+      // 用户登录所需要的参数
+      this.formdata.user = this.username; //用户姓名
+      this.formdata.passwd = this.password; //用户密码
+      let user_params = new URLSearchParams();
+      user_params.append("data", JSON.stringify(this.formdata));
+      // 请求接口
+      login(user_params).then(res => {
+        console.log(res);
+        if (res.data.success == "False") {
+          this.success("登录失败！请核对账号和密码");
+        } else {
+          var item = {};
+          item.msg = res.data.success;
+          // 获取当前时间
+          item.time = Date.now();
+          localStorage.setItem("item", JSON.stringify(item));
+          // 跳转到首页
+          this.$router.push("/home");
+        }
+      });
     },
+    // 系统消息提示
     success(message) {
       this.$success({
-        title: '系统提示',
+        title: "系统提示",
         // JSX support
         content: (
           <div>
             <p>{message}</p>
           </div>
-        ),
-      })
-    },
+        )
+      });
+    }
   }
 };
 </script>

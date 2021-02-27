@@ -2,10 +2,11 @@
 import axios from 'axios';
 //基础路径
 const baseUrl = "/api";
+// const baseUrl = "";
 // 响应拦截
 axios.interceptors.response.use(res => {
-    console.group("本次请求的路径为:" + res.config.url)
-    console.log(res);
+    // console.group("本次请求的路径为:" + res.config.url)
+    // console.log(res);
     return res;
 });
 //注册信息列表

@@ -218,7 +218,7 @@ export default {
         if (!err) {
           values.pk = values.pk + values.pkcode;
           delete values.pkcode;
-          console.log(values);
+          // console.log(values);
           var params = new URLSearchParams();
           params.append("data", JSON.stringify(values));
           //调用接口

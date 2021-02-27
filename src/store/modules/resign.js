@@ -26,7 +26,6 @@ const actions = {
                     sntype(temp,item[0].substring(32));
                     arr.push(temp);
                 })
-                console.log(arr);
                 context.commit("changresignList", arr);
             }
         })

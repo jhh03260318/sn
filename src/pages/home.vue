@@ -3,15 +3,15 @@
     <a-layout-sider v-model="collapsed">
       <div class="logo">数安&amp;云安授权系统</div>
       <a-menu theme="dark" :selectedKeys="[this.$route.path]" mode="inline">
-        <a-menu-item key="/resignlist" @click="changemenu('resignlist')">
+        <a-menu-item key="/home/resignlist" @click="changemenu('/home/resignlist')">
           <a-icon type="pie-chart" />
           <span>注册信息列表</span>
         </a-menu-item>
-        <a-menu-item key="/Authorized" @click="changemenu('Authorized')">
+        <a-menu-item key="/home/Authorized" @click="changemenu('/home/Authorized')">
           <a-icon type="pie-chart" />
           <span>注册信息查询</span>
         </a-menu-item>
-        <a-menu-item key="/resign" @click="changemenu('resign')">
+        <a-menu-item key="/home/resign" @click="changemenu('/home/resign')">
           <a-icon type="pie-chart" />
           <span>注册</span>
         </a-menu-item>
