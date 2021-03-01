@@ -43,11 +43,11 @@ export default {
         if (res.data.success == "False") {
           this.success("登录失败！请核对账号和密码");
         } else {
-          var item = {};
-          item.msg = res.data.success;
-          // 获取当前时间
-          item.time = Date.now();
-          localStorage.setItem("item", JSON.stringify(item));
+          // var item = {};
+          // item.msg = res.data.success;
+          // // 获取当前时间
+          // item.time = Date.now();
+          // localStorage.setItem("item", JSON.stringify(item));
           // 跳转到首页
           this.$router.push("/home");
         }

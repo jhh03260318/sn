@@ -18,14 +18,14 @@ const router = new Router({
       children: [
         {
           path: 'resignlist',
-          name: '注册信息',
-          meta: { title: '注册信息' },
+          name: '注册信息列表',
+          meta: { title: '注册信息列表' },
           component: () => import('../pages/resign/resignlist.vue'),
         },
         {
           path: 'Authorized',
-          name: '授权注册信息',
-          meta: { title: '授权注册信息' },
+          name: '注册信息查询',
+          meta: { title: '注册信息查询' },
           component: () => import('../pages/resign/Authorized.vue'),
         },
         {
@@ -50,34 +50,34 @@ const router = new Router({
 })
 
 // 当用户的没有登录时，禁止进入系统
-router.beforeEach((to, form, next) => {
-  var time = Date.now();
-  // 判断本地存储是否有msg值
-  const item = JSON.parse(localStorage.getItem("item") || "{}");
-  // 过期时间59分钟
-  const overtime = 59 * 60 * 1000;
-  // 判断时间是否过期
-  if ((time - item.time) < overtime == false) {
-    console.log(111);
-      vm.$message.info('登录失效，请重新登录！');
-    localStorage.removeItem("item")
-  }
-  if (to.path != "/") {
-    // 判断本地存储中的item是否为空
-    if (item == {}) {
-      next("/");
-      return;
-    }
-    // 如果本地存储item有值
-    if (item.msg) {
-      next()
-    } else {
-      next("/")
-    }
-  } else {
-    next();
-  }
+// router.beforeEach((to, form, next) => {
+//   var time = Date.now();
+//   // 判断本地存储是否有msg值
+//   const item = JSON.parse(localStorage.getItem("item") || "{}");
+//   // 过期时间59分钟
+//   const overtime = 59 * 60 * 1000;
+//   // 判断时间是否过期
+//   if ((time - item.time) < overtime == false) {
+//     console.log(111);
+//       vm.$message.info('登录失效，请重新登录！');
+//     localStorage.removeItem("item")
+//   }
+//   if (to.path != "/") {
+//     // 判断本地存储中的item是否为空
+//     if (item == {}) {
+//       next("/");
+//       return;
+//     }
+//     // 如果本地存储item有值
+//     if (item.msg) {
+//       next()
+//     } else {
+//       next("/")
+//     }
+//   } else {
+//     next();
+//   }
 
-})
+// })
 
 export default router;

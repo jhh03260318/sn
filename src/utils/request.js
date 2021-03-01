@@ -3,6 +3,12 @@ import axios from 'axios';
 //基础路径
 const baseUrl = "/api";
 // const baseUrl = "";
+// 请求拦截
+axios.interceptors.request.use(config => {
+    return config;
+}, err => {
+    return Promise.resolve(err);
+})
 // 响应拦截
 axios.interceptors.response.use(res => {
     // console.group("本次请求的路径为:" + res.config.url)
@@ -14,7 +20,7 @@ export const resignList = () => {
     return axios({
         method: 'get',
         url: baseUrl + '/all',
-    });
+    })
 };
 // 授权注册信息列表
 export const authorized = (data) => {

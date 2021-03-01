@@ -1,3 +1,6 @@
+import Vue from 'vue';
+const vm = new Vue();
+import router from '../../router/index';
 // 请求接口
 import { resignList, authorized } from '../../utils/request';
 
@@ -27,6 +30,12 @@ const actions = {
                     arr.push(temp);
                 })
                 context.commit("changresignList", arr);
+            }
+        }).catch((err)=>{
+            // 当放回的状态码为401时，跳转到登录页
+            if(err.response.status==401){
+                vm.$message.info('登录过期，请重新登录！');
+                router.push("/");
             }
         })
     },

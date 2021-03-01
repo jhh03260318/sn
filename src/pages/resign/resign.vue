@@ -237,6 +237,11 @@ export default {
                 content: h("div", {}, [h("p", "注册失败：" + res.data.error)])
               });
             }
+          }).catch(err=>{
+            if(err.response.status == 401){
+              this.$message.info('登录过期，请重新登录！');
+              this.$store.push("/");
+            }
           });
         }
       });
